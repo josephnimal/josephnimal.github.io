@@ -14,7 +14,7 @@ async function setup() {
     poseNet = ml5.poseNet(video, modelLoaded);
     poseNet.on('pose', gotPoses);
     button = createButton("start tracking");
-    button.position(width,0);
+    button.position(0,0);
     button.mousePressed(() =>{
         buttonPressed = true;
     })
