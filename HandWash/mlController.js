@@ -5,19 +5,13 @@ let poseNet;
 let pose;
 let skeleton;
 
-var buttonPressed = false;
-
 async function setup() {
     createCanvas(640, 480);
     video = createCapture(VIDEO);
     video.hide();
+    //noCanvas();
     poseNet = ml5.poseNet(video, modelLoaded);
     poseNet.on('pose', gotPoses);
-    button = createButton("start tracking");
-    button.position(0,0);
-    button.mousePressed(() =>{
-        buttonPressed = true;
-    })
 }
 
 function modelLoaded() {
@@ -25,7 +19,7 @@ function modelLoaded() {
 }
 
 function gotPoses(poses) {
-  if (buttonPressed && poses.length > 0) {
+  if (poses.length > 0) {
     pose = poses[0].pose;
     skeleton = poses[0].skeleton;
     
